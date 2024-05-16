@@ -2,54 +2,16 @@ import "leaflet/dist/leaflet.css"
 import { MapContainer, Popup, TileLayer, Marker, Polygon, GeoJSON, LayersControl } from "react-leaflet";
 import "./index.css";
 import { Icon, divIcon, point } from "leaflet"
-import MarkerClusterGroup from "react-leaflet-cluster"
 // @ts-ignore
 import statesData from "../../data2.json" //geojson multipolygon propriedades CAR
 // @ts-ignore
 import { statesData2 } from "../../data4.js" //RR minified
-import marker from "../../Assets/alerta.png"
 import pin from "../../Assets/pino-de-localizacao.png"
 
 export default function MyMap() {
 
     const center = [-3.10719, -60.0261];
-    
-    // const markers = [
-    //     {
-    //         geocode: [1.53502694, -60.67424528],
-    //         popUp: "Propriedade Sr. Mariano - CAR N123"
-    //     },
-    //     {
-    //         geocode: [1.796409747 , -61.126576368],
-    //         popUp: "Propriedade Sr. Jorge - CAR N345"
-    //     },
-    //     {
-    //         geocode: [1.630487492 , -60.392562714],
-    //         popUp: "Propriedade Sr. Marco - CAR N567"
-    //     }
-    // ];
 
-    const createCustomClusterPin = (cluster: any) => {
-        // @ts-ignore
-        return new divIcon({
-            html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`,
-            className: 'custom-marker-cluster',
-            iconSize: point(33, 33, true)
-        });
-    }
-
-    const createCustomClusterMarker = (cluster: any) => {
-        // @ts-ignore
-        return new divIcon({
-            html: `<div class="cluster-icon2">${cluster.getChildCount()}</div>`,
-            className: 'custom-marker-cluster',
-            iconSize: point(33, 33, true)
-        });
-    }
-
-    const customMarker = new Icon({
-        iconSize: [78, 78], iconUrl: marker
-    })
     const customPin = new Icon({
         iconSize: [78, 78], iconUrl: pin
     })
@@ -85,32 +47,32 @@ export default function MyMap() {
                     </LayersControl.BaseLayer>
                 </LayersControl>
                 
-                <MarkerClusterGroup
+                {/* <MarkerClusterGroup
                     chunkedLoading
                     iconCreateFunction={createCustomClusterPin}
                 >
                     {
-                        statesData.teste.map((item: any) => !item.alerta ? <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={customPin}>
-                            <Popup>Propriedade CAR N: xxx sem alertas para exibir!</Popup>
-                        </Marker> : null)
+                        statesData.teste.map((item: any) => 
+                            !item.alerta 
+                                ?   <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={customPin}>
+                                        <Popup>Propriedade CAR N: xxx sem alertas para exibir!</Popup>
+                                    </Marker> 
+                                : 
+                                    null
+                        )
                     }
 
-                </MarkerClusterGroup>
-                <MarkerClusterGroup
-                    chunkedLoading
-                    iconCreateFunction={createCustomClusterMarker}
-                >
-                    {
-                        // statesData.teste.map((item: any) => (
-                        //     <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={customMarker}>
-                        //         <Popup>Propriedade CAR N: xxx com alertas!</Popup>
-                        //     </Marker>
-                        // ))
-                        statesData.teste.map((item: any) => item.alerta ? <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={customMarker}>
-                            <Popup>Propriedade CAR N: xxx com alertas!</Popup>
-                        </Marker> : null)
-                    }
-                </MarkerClusterGroup>
+                </MarkerClusterGroup> */}
+                {
+                    statesData.teste.map((item: any) =>
+                        !item.alerta
+                            ? <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={customPin}>
+                                <Popup>Propriedade CAR N: xxx sem alertas para exibir!</Popup>
+                            </Marker>
+                            :
+                            null
+                    )
+                }
                 {
                     statesData2.features.map((state: any) => {
                         const coordinates = state.geometry.coordinates[0].map((item: any) => [item[1], item[0]])
@@ -118,13 +80,12 @@ export default function MyMap() {
                         return (
                             <Polygon
                                 pathOptions={{
-                                    fillColor: "#00FF00",
-                                    fillOpacity: 0.7,
+                                    fillColor: "transparent",
                                     weight: 2,
                                     opacity: 1,
                                     // @ts-ignore
-                                    dashArray: 3,
-                                    color: "white"
+                                    dashArray: 5,
+                                    color: "red"
                                 }}
                                 positions={coordinates}
                                 eventHandlers={{
