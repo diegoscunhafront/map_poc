@@ -1,20 +1,34 @@
 import "leaflet/dist/leaflet.css"
 import { MapContainer, Popup, TileLayer, Marker, Polygon, GeoJSON, LayersControl } from "react-leaflet";
+import { Marker as TesteMarker } from '@adamscybot/react-leaflet-component-marker'
 import "./index.css";
-import { Icon, divIcon, point } from "leaflet"
+// import { Icon, divIcon, point } from "leaflet"
 // @ts-ignore
 import statesData from "../../data2.json" //geojson multipolygon propriedades CAR
 // @ts-ignore
 import { statesData2 } from "../../data4.js" //RR minified
 import pin from "../../Assets/pino-de-localizacao.png"
+import { Badge } from "antd";
+import { EnvironmentFilled } from "@ant-design/icons";
 
 export default function MyMap() {
 
     const center = [-3.10719, -60.0261];
 
-    const customPin = new Icon({
-        iconSize: [78, 78], iconUrl: pin
-    })
+    // const customPin = new Icon({
+    //     iconSize: [78, 78], iconUrl: pin
+    // })
+
+    const MarkerIconExample = (show: number) => {
+        return (
+            <div style={{ width: "3rem", height: "3rem", margin: "0px", padding: "0px", boxSizing: "border-box"}}>
+                {/* @ts-ignore */}
+                <Badge count={show.show} color="yellow" style={{ color: "black", border: "1px solid black"}}>
+                    <EnvironmentFilled style={{ color: "red", fontSize: "3rem", strokeWidth: "40px", stroke: "black" }} />    
+                </Badge>
+            </div>
+        )
+      }
 
     return(
         <div style={{ width: "75%", height: "100%"}}>
@@ -65,13 +79,23 @@ export default function MyMap() {
                 </MarkerClusterGroup> */}
                 {
                     statesData.teste.map((item: any) =>
-                        !item.alerta
-                            ? <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={customPin}>
-                                <Popup>Propriedade CAR N: xxx sem alertas para exibir!</Popup>
-                            </Marker>
-                            :
-                            null
+                        item.alerta //@ts-ignore
+                            ? <TesteMarker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={<MarkerIconExample show={item.qty} />}>
+                                <Popup>Propriedade CAR N: xxx possui 3 alertas!</Popup>
+                            </TesteMarker>
+                             //@ts-ignore
+                            // <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={customPin}>
+                            //     <Popup>Propriedade CAR N: xxx sem alertas para exibir!</Popup>
+                            // </Marker>
+                            : //@ts-ignore
+                            <TesteMarker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={<MarkerIconExample show={0}/>} />
                     )
+                    // statesData.teste.map((item: any) =>
+                    //     !item.alerta
+                    //         ? <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]}icon={<MarkerIconExample />} />
+                    //         :
+                    //         null
+                    // )
                 }
                 {
                     statesData2.features.map((state: any) => {

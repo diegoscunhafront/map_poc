@@ -1,22 +1,36 @@
 import type { CollapseProps } from 'antd';
 import { Collapse, ConfigProvider } from 'antd';
+import "./index.css"
+import { AlertFilled } from '@ant-design/icons';
 
 const List = () => {
 
     const items: CollapseProps['items'] = [
         {
             key: '1',
-            label: 'Propriedade CAR Número 12345-6',
+            label: 
+                <div style={{ display: "flex", justifyContent: "space-between"}}>
+                    <p>Propriedade CAR Número 12345-6</p>
+                    <AlertFilled style={{ color: "red"}}/>
+                </div>
+            ,
+            className: "teste",
             children: 
-                <ul style={{ padding: "0rem 2rem"}}>
+                <ul style={{ padding: "0rem 2rem" }}>
                     <li>Produtividade: 25%</li>
                     <li>Pragas: 2%</li>
                     <li>Precipitação: 7%</li>
                 </ul>,
+            
         }, 
         {
             key: '2',
-            label: 'Propriedade CAR Número 23456-7',
+            label: <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p>Propriedade CAR Número 23456-7</p>
+                <AlertFilled style={{ color: "red" }} />
+            </div>
+            ,
+            className: "teste",
             children: 
                 <ul style={{ padding: "0rem 2rem" }}>
                     <li>Produtividade: 2,5%</li>
@@ -30,7 +44,12 @@ const List = () => {
         },
         {
             key: '3',
-            label: 'Propriedade CAR Número 34567-8',
+            label: <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p>Propriedade CAR Número 34567-8</p>
+                <AlertFilled style={{ color: "red" }} />
+            </div>
+            ,
+            className: "teste",
             children: 
                 <ul style={{ padding: "0rem 2rem" }}>
                     <li>Produtividade: 0,5%</li>
@@ -194,7 +213,11 @@ const List = () => {
                         }
                     }}
                 >
-                    <Collapse items={items} defaultActiveKey={['1']} onChange={onChange} />
+                    <Collapse 
+                        items={items} 
+                        defaultActiveKey={['1']} 
+                        onChange={onChange} 
+                    />
                 </ConfigProvider>
             </div>
         </div>
