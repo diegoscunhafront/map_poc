@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@adamscybot/react-leaflet-component-marker@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@adamscybot/react-leaflet-component-marker/-/react-leaflet-component-marker-1.1.0.tgz#b25737c408e12d1644bfd3bdeeeefa03bca31cd5"
+  integrity sha512-QIT+XSaCtD/UJHlrzeFz7dt9+0acO7c3Kau5iKavdA9E+60k/sUKc7m3LZhAOVenXlzTJnFBByEr9WX6N238Cg==
+  dependencies:
+    react-is "^18.0.0"
+
 "@ant-design/colors@^7.0.0", "@ant-design/colors@^7.0.2":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@ant-design/colors/-/colors-7.0.2.tgz#c5c753a467ce8d86ba7ca4736d2c01f599bb5492"
@@ -1773,7 +1780,7 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
-react-is@^18.2.0:
+react-is@^18.0.0, react-is@^18.2.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==

@@ -2,6 +2,7 @@
     "teste": [
     {
         "alerta": true,
+        "qty": 3,
         "type": "MultiPolygon",
         "coordinates": [
             [
@@ -45,6 +46,7 @@
 
     {
         "alerta": true,
+        "qty": 7,
         "type": "MultiPolygon",
         "coordinates": [
             [
@@ -144,6 +146,7 @@
 
     {
         "alerta": true,
+        "qty": 1,
         "type": "MultiPolygon",
         "coordinates": [
             [
