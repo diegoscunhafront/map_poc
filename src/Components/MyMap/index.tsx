@@ -1,5 +1,5 @@
 import "leaflet/dist/leaflet.css"
-import { MapContainer, Popup, TileLayer, Marker, Polygon, GeoJSON, LayersControl } from "react-leaflet";
+import { MapContainer, Popup, TileLayer, Polygon, GeoJSON, LayersControl } from "react-leaflet";
 import { Marker as TesteMarker } from '@adamscybot/react-leaflet-component-marker'
 import "./index.css";
 // import { Icon, divIcon, point } from "leaflet"
@@ -7,7 +7,7 @@ import "./index.css";
 import statesData from "../../data2.json" //geojson multipolygon propriedades CAR
 // @ts-ignore
 import { statesData2 } from "../../data4.js" //RR minified
-import pin from "../../Assets/pino-de-localizacao.png"
+// import pin from "../../Assets/pino-de-localizacao.png"
 import { Badge } from "antd";
 import { EnvironmentFilled } from "@ant-design/icons";
 
@@ -81,7 +81,7 @@ export default function MyMap() {
                     statesData.teste.map((item: any) =>
                         item.alerta //@ts-ignore
                             ? <TesteMarker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={<MarkerIconExample show={item.qty} />}>
-                                <Popup>Propriedade CAR N: xxx possui 3 alertas!</Popup>
+                                <Popup>Propriedade CAR N: xxx possui alertas!</Popup>
                             </TesteMarker>
                              //@ts-ignore
                             // <Marker position={[item.coordinates[0][0][0][1], item.coordinates[0][0][0][0]]} icon={customPin}>
