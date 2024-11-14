@@ -3,29 +3,19 @@
     height: 100%;
 }
 
-.cluster-icon {
-    height: 3rem;
-    width: 3rem;
-    border-radius: 50%;
-    background-color: #E74C3C;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: #fff;
-    border: 2px solid black;
+/* .leaflet-control {
+    z-index: 0 !important
 }
 
-.cluster-icon2 {
-    height: 3rem;
-    width: 3rem;
-    border-radius: 50%;
-    background-color: yellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 900;
-    font-size: 1.5rem;
-    border: 2px solid black;
+.leaflet-pane {
+    z-index: 0 !important
 }
+
+.leaflet-top,
+.leaflet-bottom {
+    z-index: 0 !important
+} */
+ .classTest {
+    z-index: 7 !important;
+    color: blue
+ }

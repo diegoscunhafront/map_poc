@@ -1,0 +1,3 @@
+docker run -it -p8080:8080 --env INSTALL_EXTENSIONS=true 
+--env COMMUNITY_EXTENSIONS="jdbc-metrics,jdbcconfig,jdbcstore,importer-jdbc" 
+--mount type=bind,src=./src/MY/DATADIRECTORY,target=/opt/geoserver_data docker.osgeo.org/geoserver:2.26.0
